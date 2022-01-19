@@ -7,7 +7,7 @@ let cpValue
 
 const dBlack = document.getElementById('black-color');
 
-const pixels = prompt('Enter Pixels');
+// const pixels = prompt('Enter Pixels');
 
 let col = pixels;
 let rows = pixels;
@@ -80,18 +80,16 @@ function blackColor(col, rows){
   } );
 
   // Change color
-  colorPicker.onchange = ()=>{
-    cpValue = this.value;
+  colorPicker.addEventListener('change',()=>{
     const boxes = document.querySelectorAll('.boxes');
     for (let i=0; i < (col * rows); i++){
       boxes[i].addEventListener('mouseover', ()=>{
-        boxes[i].style.backgroundColor = cpValue;
-        console.log(boxes[i].style.backgroundColor);
+        boxes[i].style.backgroundColor = colorPicker.value;
+        console.log(colorPicker.value);
       })
     }
-    console.log(cpValue);\
-    alert(cpValue);
+  });
+    
 
-  }
 
 
