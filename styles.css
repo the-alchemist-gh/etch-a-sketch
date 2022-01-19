@@ -1,0 +1,29 @@
+body {
+  background-color: #ededed;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10%;
+}
+.container {
+  width: 500px;
+  height: 500px;
+  background-color: rgb(255, 255, 255);
+  display: inline-grid;
+  box-shadow: 21px 21px 43px #c9c9c9, -21px -21px 43px #ffffff;
+}
+.boxes {
+  background-color: rgb(255, 255, 255);
+  /* border-radius: 10px; */
+}
+
+.btn {
+  margin: 20px;
+}
+
+button {
+  box-shadow: 5px 5px 13px #c7c7c7, -5px -5px 13px #f9f9f9;
+}
