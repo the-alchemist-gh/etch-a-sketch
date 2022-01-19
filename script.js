@@ -3,6 +3,8 @@ const container = document.querySelector('.container');
 const resetBtn = document.getElementById('reset-color');
 const eraseBtn = document.getElementById('erase-color');
 const colorPicker = document.getElementById('color-picker');
+const slider = document.getElementById('myRange');
+const sliderNum = document.getElementById('slider-number');
 let cpValue
 
 const dBlack = document.getElementById('black-color');
@@ -11,6 +13,11 @@ const dBlack = document.getElementById('black-color');
 
 let col = pixels;
 let rows = pixels;
+
+
+slider.oninput = function() {
+  sliderNum.innerHTML = this.value +' x '+ this.value;
+}
 
 createDivs(col,rows);
 
