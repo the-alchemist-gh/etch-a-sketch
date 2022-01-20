@@ -11,35 +11,43 @@ const dBlack = document.getElementById('black-color');
 
 // const pixels = prompt('Enter Pixels');
 
-let col = pixels;
-let rows = pixels;
-
-
-slider.oninput = function() {
-  sliderNum.innerHTML = this.value +' x '+ this.value;
-}
-
-createDivs(col,rows);
-
-// container.appendChild(divEl);
-
-// // add style to boxes
-// let boxWidth = parseInt(prompt('Enter number'));
-// let boxHeight = parseInt(prompt('Enter height number'));
-
-
-// let containerWidth = container.offsetWidth / boxWidth;
-// let containerHeight = container.offsetHeight / boxHeight;
+let pixel=slider.value;
 
 
 
+slider.addEventListener('input', ()=>{
+  sliderNum.textContent = slider.value +' x '+ slider.value;
+  console.log(sliderNum);
+  console.log(slider.value);
+  pixel = slider.value;
 
-function createDivs(col, rows){
+    for (let i=0; i < (pixel * pixel); i++){
+      const boxes1 = document.querySelectorAll('.boxes');
+      boxes1[i].style.backgroundColor = "#fff";
+      // const divEl = document.createElement('div');
+      container.style.gridTemplateColumns = `repeat(${pixel} , 1fr)`;
+      container.style.gridTemplateRows = `repeat(${pixel} , 1fr)`;
+      // divEl.classList.add('boxes');
+      // boxes.style.height = boxHeight+'px';
+      // boxes.style.width = boxWidth+'px';
+      // container.appendChild(divEl);
+    }
 
-    for (let i=0; i < (col * rows); i++){
+  // createDivs(pixel,pixel);
+
+});
+
+
+createDivs(pixel,pixel);
+
+
+
+function createDivs(pixel, pixel){
+
+    for (let i=0; i < (pixel * pixel); i++){
     const divEl = document.createElement('div');
-    container.style.gridTemplateColumns = `repeat(${col} , 1fr)`;
-    container.style.gridTemplateRows = `repeat(${rows} , 1fr)`;
+    container.style.gridTemplateColumns = `repeat(${pixel} , 1fr)`;
+    container.style.gridTemplateRows = `repeat(${pixel} , 1fr)`;
     divEl.classList.add('boxes');
     // boxes.style.height = boxHeight+'px';
     // boxes.style.width = boxWidth+'px';
@@ -47,14 +55,14 @@ function createDivs(col, rows){
 
   };
 
-  blackColor(col, rows);
+  blackColor(pixel, pixel);
 };
 
-function blackColor(col, rows){
+function blackColor(pixel, pixel){
   const boxes = document.querySelectorAll('.boxes');
 
 
-  for (let i=0; i < (col * rows); i++){
+  for (let i=0; i < (pixel * pixel); i++){
     boxes[i].addEventListener('mouseover', ()=>{
       boxes[i].style.backgroundColor = "black";
     })
@@ -63,14 +71,14 @@ function blackColor(col, rows){
 
   resetBtn.addEventListener('click', ()=>{
     const boxes1 = document.querySelectorAll('.boxes');
-    for (let i=0; i < (col * rows); i++){
+    for (let i=0; i < (pixel * pixel); i++){
       boxes1[i].style.backgroundColor = "#fff";
     }
   });
 
   eraseBtn.addEventListener('click', ()=>{
     const boxes = document.querySelectorAll('.boxes');
-    for (let i=0; i < (col * rows); i++){
+    for (let i=0; i < (pixel * pixel); i++){
       boxes[i].addEventListener('mouseover', ()=>{
         boxes[i].style.backgroundColor = "#fff";
       })
@@ -89,7 +97,7 @@ function blackColor(col, rows){
   // Change color
   colorPicker.addEventListener('change',()=>{
     const boxes = document.querySelectorAll('.boxes');
-    for (let i=0; i < (col * rows); i++){
+    for (let i=0; i < (pixel * pixel); i++){
       boxes[i].addEventListener('mouseover', ()=>{
         boxes[i].style.backgroundColor = colorPicker.value;
         console.log(colorPicker.value);
