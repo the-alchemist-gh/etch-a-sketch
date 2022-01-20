@@ -76,7 +76,7 @@ function blackColor(pixel, pixel){
 
   dBlack.addEventListener('click', ()=>{
     const boxes = document.querySelectorAll('.boxes');
-    for (let i=0; i < (col * rows); i++){
+    for (let i=0; i < (pixel * pixel); i++){
       boxes[i].addEventListener('mouseover', ()=>{
         boxes[i].style.backgroundColor = "black";
       })
@@ -89,9 +89,8 @@ function blackColor(pixel, pixel){
     for (let i=0; i < (pixel * pixel); i++){
       boxes[i].addEventListener('mouseover', ()=>{
         boxes[i].style.backgroundColor = colorPicker.value;
-        console.log(colorPicker.value);
-      })
-    }
+      });
+    };
   });
     
 
