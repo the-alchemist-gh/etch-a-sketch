@@ -2,6 +2,7 @@
 const container = document.querySelector('.container');
 const resetBtn = document.getElementById('reset-color');
 const eraseBtn = document.getElementById('erase-color');
+const rgbBtn = document.getElementById('rainbow-color');
 const colorPicker = document.getElementById('color-picker');
 const slider = document.getElementById('myRange');
 const sliderNum = document.getElementById('slider-number');
@@ -11,7 +12,6 @@ const dBlack = document.getElementById('black-color');
 
 // const pixels = prompt('Enter Pixels');
 
-let pixel=slider.value;
 
 
 // function to remove all child nodes
@@ -23,9 +23,12 @@ function removeAllChildNodes(parent) {
 
 slider.addEventListener('input', ()=>{
   sliderNum.textContent = slider.value +' x '+ slider.value;
+  let pixel = slider.value;
   removeAllChildNodes(container);
   createDivs(slider.value, slider.value);
 });
+
+let pixel=slider.value;
 
 createDivs(pixel,pixel);
 
@@ -79,6 +82,20 @@ function blackColor(pixel, pixel){
     for (let i=0; i < (pixel * pixel); i++){
       boxes[i].addEventListener('mouseover', ()=>{
         boxes[i].style.backgroundColor = "black";
+      })
+    }
+  } );
+
+// RAINBOW
+  rgbBtn.addEventListener('click', ()=>{
+    const boxes = document.querySelectorAll('.boxes');
+    for (let i=0; i < (pixel * pixel); i++){
+      boxes[i].addEventListener('mouseover', ()=>{
+        let rColor = Math.floor(Math.random() * 255);
+        let gColor = Math.floor(Math.random() * 255);
+        let bColor = Math.floor(Math.random() * 255);
+
+        boxes[i].style.backgroundColor = `rgb(${rColor},${gColor},${bColor})`;
       })
     }
   } );
