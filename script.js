@@ -14,29 +14,18 @@ const dBlack = document.getElementById('black-color');
 let pixel=slider.value;
 
 
+// function to remove all child nodes
+function removeAllChildNodes(parent) {
+  while (parent.firstChild) {
+      parent.removeChild(parent.firstChild);
+  }
+}
 
 slider.addEventListener('input', ()=>{
   sliderNum.textContent = slider.value +' x '+ slider.value;
-  console.log(sliderNum);
-  console.log(slider.value);
-  pixel = slider.value;
-
-    for (let i=0; i < (pixel * pixel); i++){
-      const boxes1 = document.querySelectorAll('.boxes');
-      boxes1[i].style.backgroundColor = "#fff";
-      // const divEl = document.createElement('div');
-      container.style.gridTemplateColumns = `repeat(${pixel} , 1fr)`;
-      container.style.gridTemplateRows = `repeat(${pixel} , 1fr)`;
-      // divEl.classList.add('boxes');
-      // boxes.style.height = boxHeight+'px';
-      // boxes.style.width = boxWidth+'px';
-      // container.appendChild(divEl);
-    }
-
-  // createDivs(pixel,pixel);
-
+  removeAllChildNodes(container);
+  createDivs(slider.value, slider.value);
 });
-
 
 createDivs(pixel,pixel);
 
