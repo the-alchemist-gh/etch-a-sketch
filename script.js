@@ -25,16 +25,16 @@ slider.addEventListener('input', ()=>{
   sliderNum.textContent = slider.value +' x '+ slider.value;
   let pixel = slider.value;
   removeAllChildNodes(container);
-  createDivs(slider.value, slider.value);
+  createDivs(slider.value);
 });
 
 let pixel=slider.value;
 
-createDivs(pixel,pixel);
+createDivs(pixel);
 
 
 
-function createDivs(pixel, pixel){
+function createDivs(pixel){
 
     for (let i=0; i < (pixel * pixel); i++){
     const divEl = document.createElement('div');
@@ -47,13 +47,11 @@ function createDivs(pixel, pixel){
 
   };
 
-  blackColor(pixel, pixel);
+  blackColor(pixel);
 };
 
-function blackColor(pixel, pixel){
+function blackColor(pixel){
   const boxes = document.querySelectorAll('.boxes');
-
-
   for (let i=0; i < (pixel * pixel); i++){
     boxes[i].addEventListener('mouseover', ()=>{
       boxes[i].style.backgroundColor = "black";
@@ -63,14 +61,14 @@ function blackColor(pixel, pixel){
 
   resetBtn.addEventListener('click', ()=>{
     const boxes1 = document.querySelectorAll('.boxes');
-    for (let i=0; i < (pixel * pixel); i++){
+    for (let i=0; i < (slider.value * slider.value); i++){
       boxes1[i].style.backgroundColor = "#fff";
     }
   });
 
   eraseBtn.addEventListener('click', ()=>{
     const boxes = document.querySelectorAll('.boxes');
-    for (let i=0; i < (pixel * pixel); i++){
+    for (let i=0; i < (slider.value * slider.value); i++){
       boxes[i].addEventListener('mouseover', ()=>{
         boxes[i].style.backgroundColor = "#fff";
       })
@@ -79,7 +77,7 @@ function blackColor(pixel, pixel){
 
   dBlack.addEventListener('click', ()=>{
     const boxes = document.querySelectorAll('.boxes');
-    for (let i=0; i < (pixel * pixel); i++){
+    for (let i=0; i < (slider.value * slider.value); i++){
       boxes[i].addEventListener('mouseover', ()=>{
         boxes[i].style.backgroundColor = "black";
       })
@@ -88,28 +86,54 @@ function blackColor(pixel, pixel){
 
 // RAINBOW
   rgbBtn.addEventListener('click', ()=>{
-    const boxes = document.querySelectorAll('.boxes');
-    for (let i=0; i < (pixel * pixel); i++){
+    let boxes = document.querySelectorAll('.boxes');
+    for (let i=0; i < (slider.value * slider.value); i++){
       boxes[i].addEventListener('mouseover', ()=>{
         let rColor = Math.floor(Math.random() * 255);
         let gColor = Math.floor(Math.random() * 255);
         let bColor = Math.floor(Math.random() * 255);
-
         boxes[i].style.backgroundColor = `rgb(${rColor},${gColor},${bColor})`;
       })
+      // console.log(pixel);
+      console.log(slider.value);
+
     }
   } );
+
+  // function rainbowColor(slider){
+  //   let boxes = document.querySelectorAll('.boxes');
+  //   for (let i=0; i < (slider.value * slider.value); i++){
+  //     boxes[i].addEventListener('mouseover', ()=>{
+  //       let rColor = Math.floor(Math.random() * 255);
+  //       let gColor = Math.floor(Math.random() * 255);
+  //       let bColor = Math.floor(Math.random() * 255);
+
+  //       boxes[i].style.backgroundColor = `rgb(${rColor},${gColor},${bColor})`;
+  //     })
+  //   }
+  // }
+
+  // function changeColor(slider){
+  //       let boxes = document.querySelectorAll('.boxes');
+
+  //   for (let i=0; i < (slider.value * slider.value); i++){
+  //     boxes[i].addEventListener('mouseover', ()=>{
+  //       boxes[i].style.backgroundColor = colorPicker.value;
+  //     });
+  //   }
+  // }
 
   // Change color
   colorPicker.addEventListener('change',()=>{
     const boxes = document.querySelectorAll('.boxes');
-    for (let i=0; i < (pixel * pixel); i++){
+    for (let i=0; i < (slider.value * slider.value); i++){
+      // boxes[i].removeEventListener('mouseover', changeColor(slider))
       boxes[i].addEventListener('mouseover', ()=>{
         boxes[i].style.backgroundColor = colorPicker.value;
       });
-    };
+    }; 
   });
-    
+
 
 
 

@@ -107,3 +107,14 @@ main {
 button {
   box-shadow: 5px 5px 13px #c7c7c7, -5px -5px 13px #f9f9f9;
 }
+
+
+@media only screen and (max-width: 600px) {
+  main{
+    display: block;
+  }
+
+  .container{
+    width: 100%;
+  }
+}
